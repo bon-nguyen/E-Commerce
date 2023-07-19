@@ -17,9 +17,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // controller
 const authRouter = require("./routes/authRoute");
 const productRouter = require("./routes/productRoute")
+const blogRouter = require('./routes/blogRoute')
 
 app.use("/api/user", authRouter);
 app.use('/api/product', productRouter)
+app.use('/api/blog', blogRouter)
+
 app.use(notFound)
 app.use(errorHandler)
 

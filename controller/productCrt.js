@@ -6,7 +6,6 @@ const validateMongoDbId = require('../utils/validateMongodbId')
 
 const getAllProduct = asyncHandle(async (req, res) => {
     try {
-
         const queryObj = { ...req.query };
         const excludeFields = ["page", "sort", "limit", "fields"];
         excludeFields.forEach((el) => delete queryObj[el]);
@@ -55,7 +54,10 @@ const getProduct = asyncHandle(async (req, res) => {
     const { id } = req.params
     validateMongoDbId(id)
     try {
-        const detailProduct = await Product.findById(id)
+        const detailProduct = await Product
+            .findById(id)
+            .populate("likes")
+            .populate("dislikes");
         res.json(detailProduct)
     } catch (error) {
         throw new Error(error)
