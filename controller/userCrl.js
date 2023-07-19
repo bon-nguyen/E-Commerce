@@ -72,6 +72,8 @@ const loginUser = asyncHandler(async (req, res) => {
     }
 })
 
+
+
 // [GET] LIST USER
 const getAllUser = asyncHandler(async (req, res) => {
     try {
@@ -178,6 +180,20 @@ const handleRefreshToken = asyncHandler(async (req, res) => {
     });
 });
 
+// update password
+const updatePassword = asyncHandler(async (req, res) => {
+    const { _id } = req.user
+    const { password } = req.body
+    validateMongoDbId(_id);
+    const user = await User.findById(_id)
+    if (password) {
+        user.password = password;
+        const updatedPassword = await user.save();
+        res.json(updatedPassword);
+    } else {
+        res.json(user);
+    }
+})
 
 
-module.exports = { createUser, loginUser, getAllUser, getUser, deleteUser, updateUser, blockUser, unblockUser, handleRefreshToken, logoutUser }
+module.exports = { createUser, loginUser, getAllUser, getUser, deleteUser, updateUser, blockUser, unblockUser, handleRefreshToken, logoutUser, updatePassword }
