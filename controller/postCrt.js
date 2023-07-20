@@ -2,7 +2,6 @@ const Blog = require('../models/blogModel')
 const slugify = require('slugify')
 const asyncHandle = require('express-async-handler')
 const validateMongoDbId = require('../utils/validateMongodbId')
-const { query } = require('express')
 
 // [POST] create blog
 const createBlog = asyncHandle(async (req, res) => {

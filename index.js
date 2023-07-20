@@ -20,12 +20,14 @@ const productRouter = require("./routes/productRoute")
 const blogRouter = require('./routes/blogRoute')
 const categoriesRouter = require('./routes/prodCategoryRoute')
 const brandRouter = require('./routes/brandRoute')
+const couponRouter = require('./routes/couponRoute')
 
 app.use("/api/user", authRouter);
 app.use('/api/product', productRouter)
 app.use('/api/blog', blogRouter)
 app.use('/api/category', categoriesRouter)
 app.use('/api/brand', brandRouter)
+app.use('/api/coupon', couponRouter)
 
 app.use(notFound)
 app.use(errorHandler)
