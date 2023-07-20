@@ -59,7 +59,7 @@ const deleteCategory = asyncHandle(async (req, res) => {
     validateMongoDbId(id)
     try {
         const deleteCategory = await PCategory.findByIdAndDelete(id)
-        res.json(deleteCategory)
+        res.json(newCategory)
     } catch (error) {
         throw new Error(error)
     }

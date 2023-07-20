@@ -67,4 +67,5 @@ const deleteBrand = asyncHandle(async (req, res) => {
     }
 })
 
+
 module.exports = { createBrand, getAllBrands, getBrand, updateBrand, deleteBrand }

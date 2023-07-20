@@ -10,7 +10,7 @@ router.post('/register', createUser)
 router.post('/login', loginUser)
 router.get('/refetch', handleRefreshToken)
 
-router.get('/all', authMiddleware, isAdmin, getAllUser)
+router.get('/all', getAllUser)
 router.get('/:id', getUser)
 router.delete('/:id', deleteUser)
 router.put('/:id', updateUser)
